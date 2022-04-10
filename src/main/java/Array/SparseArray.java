@@ -1,8 +1,4 @@
-package com.xiaozhu.algorithm;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+package Array;
 
 public class SparseArray {
     static int a=11;

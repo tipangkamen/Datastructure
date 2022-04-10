@@ -1,4 +1,4 @@
-package com.xiaozhu.algorithm;
+package Queue;
 
 import java.util.Arrays;
 
