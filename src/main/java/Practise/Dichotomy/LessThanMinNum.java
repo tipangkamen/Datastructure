@@ -28,5 +28,4 @@ public class LessThanMinNum {
         System.out.println(findLessThanMinNum(arr1, 3));
 
     }
-
 }
