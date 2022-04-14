@@ -9,22 +9,51 @@ package Practise.Dichotomy;
 * */
 public class SearchRotatedSortedArray {
 
-    public int search(int[] nums, int target) {
-        int l=0;
-        int r=nums.length;
-        while (l<r){
-            int mid=l+((r-l)>>1);
-            if (nums[mid]==target){
+    public static int search(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        int mid;
+        while (l < r) {
+            mid = l + ((r - l) >> 1);
+            if (nums[mid] == target) {
                 return mid;
             }
-            //说明mid就是旋转的下标
-            if (nums[mid] > nums[mid+1]){
-
-            }else {
-
+            //说明mid是在左边的有序数组中
+            if (nums[mid] >= nums[0]) {
+                if (nums[mid] > target && nums[0] <= target) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            } else {
+                if (nums[mid] < target && nums[nums.length - 1] >= target) {
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
             }
         }
+        return nums[l] == target ? l : -1;
+    }
 
-        return -1;
+    public static int searchIndex(int[] nums) {
+        int l = 0;
+        int r = nums.length;
+        while (l < r) {
+            int mid = l + ((r - l) >> 1);
+            //说明mid还在上升期
+            if (nums[mid] > nums[0]) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        return l;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {5, 1, 3};
+        int i = search(nums, 3);
+        System.out.println(i);
     }
 }
